@@ -5,7 +5,12 @@ public class Pawn extends Figure {
     }
 
     public boolean moveTo(PosX x, int Y) {
-        return true;
+        if (color.toUpperCase().equals("WHITE")) {
+            return column == toColumn && (toRow - row == 1 || (row == '2' && toRow == '4')); 
+        } 
+        else if (color.toUpperCase().equals("BLACK")){
+            return column == toColumn && (toRow - row == -1 || (row == '7' && toRow == '5')); 
+        }
     }
 
     @Override

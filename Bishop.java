@@ -1,11 +1,11 @@
-public class Rook extends Figure {
+public class Bishop implements IntBishop {
 
-    Rook(ChessPieces chessPiece, PosX posX, int posY) {
+    Pawn(ChessPieces chessPiece, PosX posX, int posY) {
         super(chessPiece, posX, posY);
     }
 
     public boolean moveTo(PosX x, int Y) {
-        return (column == toColumn|| row == toRow); 
+        return (Math.abs(toRow - row) == Math.abs(toColumn- column));
     }
 
     @Override
