@@ -5,7 +5,8 @@ public class Knight extends Figure {
     }
 
     public boolean moveTo(PosX x, int Y) {
-        return true;
+        return (Math.abs(toRow - row) == 2 && Math.abs(toColumn - column) == 1) ||
+            (Math.abs(toColumn - column) == 2 && Math.abs(toRow - row) == 1);
     }
 
     @Override
