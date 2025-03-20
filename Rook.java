@@ -5,7 +5,7 @@ public class Rook extends Figure {
     }
 
     public boolean moveTo(PosX x, int Y) {
-        return (column == toColumn|| row == toRow); 
+        return (posX.ordinal() == x.ordinal() || posY == Y); 
     }
 
     @Override
