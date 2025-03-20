@@ -5,12 +5,15 @@ public class Pawn extends Figure {
     }
 
     public boolean moveTo(PosX x, int Y) {
-        if (color.toUpperCase().equals("WHITE")) {
-            return column == toColumn && (toRow - row == 1 || (row == '2' && toRow == '4')); 
-        } 
-        else if (color.toUpperCase().equals("BLACK")){
-            return column == toColumn && (toRow - row == -1 || (row == '7' && toRow == '5')); 
+        if (chessPiece == ChessPieces.PAWN) {
+            if (color.equalsIgnoreCase("WHITE")) {
+                return posX.ordinal() == x.ordinal() && (Y - posY == 1 || (posY == 2 && Y == 4)); 
+            } 
+            else if (color.equalsIgnoreCase("BLACK")){
+                return posX.ordinal() == x.ordinal() && (Y - posY == -1 || (posY == 7 && Y == 5)); 
+            }
         }
+        return false;
     }
 
     @Override

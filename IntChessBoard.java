@@ -1,3 +1,3 @@
 public interface IntChessBoard {
-	verifyCoordinate(Pos X, int Y);
+	verifyCoordinate(PosX X, int Y);
 }

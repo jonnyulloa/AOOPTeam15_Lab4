@@ -6,6 +6,6 @@ public class King extends Queen {
 
 	@Override
 	boolean moveTo(PosX x, int Y) {
-        return Math.abs(column - toColumn) <= 1 && Math.abs(row - toRow) <= 1;
+        return Math.abs(posX.ordinal() - x.ordinal()) <= 1 && Math.abs(posY - Y) <= 1;
 	}
 }
