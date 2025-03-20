@@ -1,6 +1,10 @@
+package chess;
+
+import chess.PosX;
+
 public class Knight extends Figure {
 
-    Knight(ChessPieces chessPiece, PosX posX, int posY) {
+    public Knight(ChessPieces chessPiece, PosX posX, int posY) {
         super(chessPiece, posX, posY);
     }
 

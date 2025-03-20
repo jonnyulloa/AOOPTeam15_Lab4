@@ -1,9 +1,16 @@
-public class Pawn extends Figure {
+package chess;
 
-    Pawn(ChessPieces chessPiece, PosX posX, int posY) {
+import chess.PosX;
+
+public class Pawn extends Figure {
+    String color;
+
+    public Pawn(ChessPieces chessPiece, PosX posX, int posY, String color) {
         super(chessPiece, posX, posY);
+        this.color = color;
     }
 
+    @Override
     public boolean moveTo(PosX x, int Y) {
         if (chessPiece == ChessPieces.PAWN) {
             if (color.equalsIgnoreCase("WHITE")) {

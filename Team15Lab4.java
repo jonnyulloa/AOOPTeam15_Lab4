@@ -5,24 +5,27 @@
 
 import java.util.Scanner;
 
+import chess.*;
+
 public class Team15Lab4 {
     static Scanner scanner;
     static String piece;
+    static String color;
     static PosX posX;
     static int posY;
     static PosX toX;
     static int toY; 
     static int i;
-    static Figure[] chessPieces = new Figure[6];
+    static Figure[] chessPieces = new Figure[5];
 
     public static void main(String[] args) {
         // Derek, Jonathan, Ugyen
         scanner = new Scanner(System.in);
-        for(i = 0; i < 6; i++){
+        for(i = 0; i < chessPieces.length; i++){
             boolean isDuplicate = false;
             askForPiece();
             for (int j = 0; j < chessPieces.length; j++) {
-                if (chessPieces[j] != null && chessPieces[j].pieceName.equalsIgnoreCase((piece))) {
+                if (chessPieces[j] != null && chessPieces[j].chessPiece.name().equalsIgnoreCase((piece))) {
                     isDuplicate = true;
                     System.out.println("You already chose that piece. Try again.");
                     i--;
@@ -43,9 +46,9 @@ public class Team15Lab4 {
         boolean isPiece = false;
         while (true) {
             System.out.println("Enter piece to move (e.g Pawn, Rook, Knight, Bishop, Queen, and King): ");
-            String pieceInput = scanner.nextLine().trim().toUpperCase();
+            piece = scanner.nextLine().trim().toUpperCase();
             try {
-            	chessPiece = ChessPieces.valueOf(pieceInput);
+            	ChessPieces chessPiece = ChessPieces.valueOf(piece);
             	break;
             } catch (IllegalArgumentException e) {
             	System.out.println("Invalid piece. Try again.");
@@ -56,8 +59,8 @@ public class Team15Lab4 {
     static void askForColor() {
         while (true) {
             System.out.println("Pick a piece color (e.g. White or Black): ");
-            pieceColor = scanner.nextLine();
-            if (!Chessboard.validColor(pieceColor)) {
+            color = scanner.nextLine().trim().toUpperCase();
+            if (!ChessBoard.validColor(color)) {
                 System.out.println("That piece color is not valid. Try again.");
             } else {
                 break;
@@ -101,7 +104,7 @@ public class Team15Lab4 {
                 chessPieces[i] = new Rook(ChessPieces.ROOK, posX, posY);
                 break;
             case "PAWN": // Derek, Jonathan
-                chessPieces[i] = new Pawn(ChessPieces.PAWN, posX, posY);
+                chessPieces[i] = new Pawn(ChessPieces.PAWN, posX, posY, color);
                 break;
             case "KNIGHT": // Derek, Ugyen
                 chessPieces[i] = new Knight(ChessPieces.KNIGHT, posX, posY);
@@ -110,7 +113,8 @@ public class Team15Lab4 {
                 chessPieces[i] = new Queen(ChessPieces.QUEEN, posX, posY);
                 break;
             case "BISHOP": // Derek, Jonathan
-                chessPieces[i] = new Bishop(ChessPieces.BISHOP, posX, posY);
+                i--;
+                System.out.println("Bishop is not added to the array.");
                 break;
         }
     }
@@ -126,6 +130,7 @@ public class Team15Lab4 {
             	System.out.println("Invalid column. Try again.");
             }
         }
+
         while (true) {
             System.out.println("Enter target row (e.g 1-8): ");
             try {
@@ -142,8 +147,10 @@ public class Team15Lab4 {
     }
 
     static void process() {
-        for (int i = 0; i < chessPieces.length; i++) {
-            chessPieces[i].moveTo(toColumn, toRow);
+        for (Figure i: chessPieces) {
+        	if (i != null) {
+        		System.out.println(i.chessPiece + " at " + i.posX + i.posY + " can move to " + toX + toY + ": " + i.moveTo(toX, toY));
+        	}
         }
     }
 } 
