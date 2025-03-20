@@ -1,7 +1,12 @@
+package chess;
+
+import chess.PosX;
+import interfaces.IntFigure;
+
 public abstract class Figure implements IntFigure {
-    ChessPieces chessPiece;
-    PosX posX;
-    int posY;
+    public ChessPieces chessPiece;
+    public PosX posX;
+    public int posY;
 
     public Figure(ChessPieces chessPiece, PosX posX, int posY) {
         this.chessPiece = chessPiece;
@@ -9,5 +14,7 @@ public abstract class Figure implements IntFigure {
         this.posY = posY;
     }
 
+    public abstract boolean moveTo(PosX x, int Y);
+    
     public abstract String toString();
 }
